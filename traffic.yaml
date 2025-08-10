@@ -1,0 +1,148 @@
+logs:
+  - timestamp: "2025-07-30T09:12:01Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 192.168.1.10
+    src_port: 53245
+    dst_ip: 93.184.216.34
+    dst_port: 80
+    bytes: 1500
+    flags: [SYN, ACK]
+    application: HTTP
+  - timestamp: "2025-07-30T09:12:02Z"
+    action: DROP
+    protocol: UDP
+    src_ip: 10.0.0.5
+    src_port: 12345
+    dst_ip: 172.217.5.110
+    dst_port: 53
+    bytes: 128
+    application: DNS
+  - timestamp: "2025-07-30T09:12:05Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 192.168.1.11
+    src_port: 44321
+    dst_ip: 13.107.21.200
+    dst_port: 443
+    bytes: 2048
+    flags: [ACK, PSH]
+    application: HTTPS
+  - timestamp: "2025-07-30T09:12:07Z"
+    action: DROP
+    protocol: TCP
+    src_ip: 192.168.1.12
+    src_port: 60000
+    dst_ip: 192.0.2.1
+    dst_port: 22
+    bytes: 0
+    flags: [RST]
+    application: SSH
+  - timestamp: "2025-07-30T09:12:10Z"
+    action: ACCEPT
+    protocol: ICMP
+    src_ip: 192.168.1.13
+    dst_ip: 8.8.8.8
+    icmp_type: echo-request
+    bytes: 64
+  - timestamp: "2025-07-30T09:12:15Z"
+    action: DROP
+    protocol: TCP
+    src_ip: 203.0.113.5
+    src_port: 445
+    dst_ip: 192.168.1.14
+    dst_port: 3389
+    bytes: 512
+    flags: [SYN]
+    application: RDP
+  - timestamp: "2025-07-30T09:12:20Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 192.168.1.10
+    src_port: 53246
+    dst_ip: 93.184.216.34
+    dst_port: 80
+    bytes: 1500
+    flags: [ACK]
+    application: HTTP
+  - timestamp: "2025-07-30T09:15:45Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 192.168.1.15
+    src_port: 34567
+    dst_ip: 198.51.100.20
+    dst_port: 8080
+    bytes: 1024
+    flags: [SYN, ACK]
+    application: HTTP-Proxy
+  - timestamp: "2025-07-30T09:16:00Z"
+    action: DROP
+    protocol: UDP
+    src_ip: 198.51.100.25
+    src_port: 40000
+    dst_ip: 192.168.1.16
+    dst_port: 161
+    bytes: 256
+    application: SNMP
+  - timestamp: "2025-07-30T09:12:25Z"
+    action: DROP
+    protocol: TCP
+    src_ip: 192.168.1.10
+    src_port: 53247
+    dst_ip: 93.184.216.34
+    dst_port: 80
+    bytes: 1500
+    flags: [SYN]
+    application: HTTP
+
+  - timestamp: "2025-07-30T09:12:40Z"
+    action: DROP
+    protocol: TCP
+    src_ip: 192.168.1.10
+    src_port: 53248
+    dst_ip: 93.184.216.34
+    dst_port: 80
+    bytes: 1500
+    flags: [SYN]
+    application: HTTP
+
+  - timestamp: "2025-07-30T09:12:55Z"
+    action: DROP
+    protocol: TCP
+    src_ip: 192.168.1.10
+    src_port: 53249
+    dst_ip: 93.184.216.34
+    dst_port: 80
+    bytes: 1500
+    flags: [SYN]
+    application: HTTP
+
+  - timestamp: "2025-07-30T10:00:00Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 10.0.0.5
+    src_port: 12346
+    dst_ip: 172.217.5.110
+    dst_port: 53
+    bytes: 128
+    application: DNS
+
+  - timestamp: "2025-07-30T10:00:30Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 10.0.0.5
+    src_port: 12347
+    dst_ip: 172.217.5.110
+    dst_port: 53
+    bytes: 128
+    application: DNS
+
+  - timestamp: "2025-07-30T10:01:00Z"
+    action: ACCEPT
+    protocol: TCP
+    src_ip: 10.0.0.5
+    src_port: 12348
+    dst_ip: 172.217.5.110
+    dst_port: 53
+    bytes: 128
+    application: DNS

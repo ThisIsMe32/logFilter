@@ -1,0 +1,42 @@
+import yaml
+from datetime import datetime
+from collections import defaultdict
+
+def group_timestamps_by_ip(logs, action_filter = None):
+    ips = defaultdict(list)
+    for log in logs:
+        if action_filter and log["action"] != action_filter:
+            continue
+        ip = log["src_ip"]
+        ts = datetime.strptime(log["timestamp"], "%Y-%m-%dT%H:%M:%SZ")
+        ips[ip].append(ts)
+    return ips
+
+def detect_suspicious_ips(logs, ips, threshold_seconds = 60, min_attempts = 3):
+    suspicious = []
+    for ip, times in ips.items():
+        times.sort()
+        start = 0
+        for end in range(len(times)):
+            while(times[end] - times[start]).total_seconds() > threshold_seconds:
+                start += 1
+            if(end - start + 1) >= min_attempts:
+                window = times[start:end+1]
+                suspicious.append((ip, window))
+                break
+    return suspicious
+
+
+
+
+if __name__ == "__main__":
+    with open("traffic.yaml", "r") as file:
+        data = yaml.safe_load(file)
+
+    logs = data['logs']
+    ips = group_timestamps_by_ip(logs, "DROP")
+    suspicious_ips = detect_suspicious_ips(logs, ips)
+    
+    for ip, window in suspicious_ips:
+        print(f"Suspicious: {ip} had {len(window)} attempts within 60 seconds",
+            [t.strftime("%Y-%m-%dT%H:%M:%SZ") for t in window])
